@@ -1,14 +1,7 @@
 {
   "buildCommand": "cd asset_management_system && npm run build",
   "outputDirectory": "asset_management_system/dist",
-  "env": {
-    "VITE_API_URL": "@vite_api_url"
-  },
   "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "${BACKEND_URL}/api/$1"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
