@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd asset_management_system && npm run build",
-  "outputDirectory": "asset_management_system/dist",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
