@@ -32,10 +32,10 @@ function Assignments() {
       setLoading(true);
       const params = { page: currentPage };
       if (searchTerm) params.search = searchTerm;
-      
+
       const response = await api.get("assignments/", { params });
       setAssignments(response.data.results || response.data);
-      
+
       if (response.data.count) {
         setTotalPages(Math.ceil(response.data.count / 10));
       }
@@ -88,14 +88,14 @@ function Assignments() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Assignments</h1>
           <p className="text-gray-600 mt-1">Manage asset assignments</p>
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
+          className="w-full md:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
         >
           + Add Assignment
         </button>

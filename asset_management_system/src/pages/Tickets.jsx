@@ -34,10 +34,10 @@ function Tickets() {
       const params = { page: currentPage };
       if (searchTerm) params.search = searchTerm;
       if (statusFilter) params.status = statusFilter;
-      
+
       const response = await api.get("tickets/", { params });
       setTickets(response.data.results || response.data);
-      
+
       if (response.data.count) {
         setTotalPages(Math.ceil(response.data.count / 10));
       }
@@ -96,14 +96,14 @@ function Tickets() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Tickets</h1>
           <p className="text-gray-600 mt-1">Manage support tickets</p>
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
+          className="w-full md:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
         >
           + Add Ticket
         </button>

@@ -25,10 +25,10 @@ function Assets() {
       if (searchTerm) params.search = searchTerm;
       if (categoryFilter) params.category = categoryFilter;
       if (availableFilter) params.available = availableFilter === "true";
-      
+
       const response = await api.get("assets/", { params });
       setAssets(response.data.results || response.data);
-      
+
       if (response.data.count) {
         setTotalPages(Math.ceil(response.data.count / 10));
       }
@@ -94,14 +94,14 @@ function Assets() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Assets</h1>
           <p className="text-gray-600 mt-1">Manage your assets</p>
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
+          className="w-full md:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl"
         >
           + Add Asset
         </button>
@@ -190,9 +190,8 @@ function Assets() {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                          asset.available ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
-                        }`}>
+                        <span className={`px-3 py-1 text-xs font-medium rounded-full ${asset.available ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                          }`}>
                           {asset.available ? "Available" : "Unavailable"}
                         </span>
                       </td>
