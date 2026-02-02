@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function Login({ setIsAuthenticated }) {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8000/api/token/", {
+      const response = await api.post("token/", {
         username,
         password,
       });
