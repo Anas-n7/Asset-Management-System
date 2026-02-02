@@ -1,2 +1,1 @@
-release: python manage.py migrate
-web: gunicorn cores.wsgi
+web: python manage.py migrate && python create_test_user.py && gunicorn cores.wsgi

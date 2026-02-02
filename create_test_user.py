@@ -1,8 +1,3 @@
-"""
-Quick script to create a test user account.
-Run this with: python create_test_user.py
-"""
-
 import os
 import django
 
@@ -12,28 +7,19 @@ django.setup()
 
 from django.contrib.auth.models import User
 
-# Create a test user
-username = 'admin'
-password = 'admin123'  # Change this to a secure password!
+# Get credentials from environment variables or use defaults
+username = os.environ.get('DJANGO_SUPERUSER_USERNAME', 'admin')
+password = os.environ.get('DJANGO_SUPERUSER_PASSWORD', 'admin123')
+email = os.environ.get('DJANGO_SUPERUSER_EMAIL', 'admin@example.com')
 
 # Check if user already exists
 if User.objects.filter(username=username).exists():
-    print(f"User '{username}' already exists!")
-    print("You can use these credentials to login:")
-    print(f"Username: {username}")
-    print(f"Password: {password}")
+    print(f"User '{username}' already exists.")
 else:
     # Create new user
-    user = User.objects.create_user(
+    user = User.objects.create_superuser(
         username=username,
-        password=password,
-        is_staff=True,  # Makes them an admin
-        is_superuser=True
+        email=email,
+        password=password
     )
-    print("=" * 50)
-    print("Test user created successfully!")
-    print("=" * 50)
-    print(f"Username: {username}")
-    print(f"Password: {password}")
-    print("=" * 50)
-    print("\nYou can now use these credentials to login to the application.")
+    print(f"Superuser '{username}' created successfully.")
